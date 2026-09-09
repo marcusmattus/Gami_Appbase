@@ -1,0 +1,34 @@
+{
+  "name": "@gami/identity",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./mobile": "./src/mobile.ts",
+    "./web": "./src/web.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@gami/core": "workspace:*",
+    "viem": "^2.21.32"
+  },
+  "peerDependencies": {
+    "@privy-io/expo": "^0.51.0",
+    "@privy-io/react-auth": "^3.40.0",
+    "@base-org/account": "^1.0.0",
+    "@tanstack/react-query": "^5.62.0",
+    "react": "*",
+    "wagmi": "^2.14.0"
+  },
+  "devDependencies": {
+    "@tanstack/react-query": "^5.62.0",
+    "@types/react": "18.3.12",
+    "@privy-io/expo": "^0.51.0",
+    "@privy-io/react-auth": "^3.40.0",
+    "typescript": "^5.6.3",
+    "wagmi": "^2.14.0"
+  },
+  "note": "Adapters here are the ONLY place in this repo allowed to import @privy-io/* or wagmi (eslint rule 1, §11.3). devDependencies duplicate the peerDeps purely so `tsc --noEmit` has something to resolve types against in this workspace; apps/mobile and apps/web supply the real runtime versions. Two subpath exports, not one barrel — apps/mobile imports only \"@gami/identity/mobile\", apps/web only \"@gami/identity/web\". A single shared entry point re-exporting both platforms made Metro try to resolve @privy-io/react-auth (web-only, pulls in styled-components) for apps/mobile just because it imported anything from this package at all — found by actually running a real bundle, not by inspection."
+}

@@ -1,0 +1,35 @@
+{
+  "name": "gami-wallet",
+  "private": true,
+  "packageManager": "pnpm@10.19.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "core:typecheck": "pnpm --filter @gami/core typecheck",
+    "gate:no-token-strings": "node scripts/assert-no-token-strings.mjs",
+    "gate:no-farcaster-deps": "node scripts/assert-no-farcaster-deps.mjs",
+    "android": "pnpm --filter @gami/mobile android",
+    "ios": "pnpm --filter @gami/mobile ios"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "eslint": "^9.13.0",
+    "turbo": "^2.1.3",
+    "typescript": "^5.6.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "viem": "2.56.3"
+    },
+    "patchedDependencies": {
+      "react-native@0.86.3": "patches/react-native@0.86.3.patch"
+    }
+  },
+  "version": "1.0.0"
+}
