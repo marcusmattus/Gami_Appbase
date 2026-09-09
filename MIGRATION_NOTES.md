@@ -893,3 +893,12 @@ Verified: `cd apps/mobile && npx expo export --platform ios --clear` still bundl
    that the app boots.
 10. Only after 1–9: P6 (XP/quest/NOVA wiring against a real backend), then
     P7 (the account-gated release checklist in §13).
+
+## 10. Earlier blocked attempt on `main` (superseded)
+
+A separate automated pass (GitHub Copilot, merged to `main` via [PR #1](https://github.com/marcusmattus/Gami_Appbase/pull/1) before this branch existed) hit two environment limitations and stopped without writing any code:
+
+1. Its checkout contained only `README.md` — same starting point as §0 above.
+2. It had no way to fetch the design source (`claude_design` MCP unavailable, direct `claude.ai` fetch blocked in its runtime).
+
+Both blockers were specific to that runtime, not the repo or the design source itself — §1 above shows the same design project (`d0d6079a-913c-4454-be23-6a383b93f651`) being read successfully via the `DesignSync`/`claude_design` MCP once it was available. Recorded here for history; nothing in this section reflects the current state of the app.
