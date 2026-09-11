@@ -1,0 +1,36 @@
+{
+  "name": "@gami/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@base-org/account": "^1.0.0",
+    "@gami/api": "workspace:*",
+    "@gami/chain": "workspace:*",
+    "@gami/core": "workspace:*",
+    "@gami/identity": "workspace:*",
+    "@gami/ui": "workspace:*",
+    "@privy-io/react-auth": "^3.40.0",
+    "@tanstack/react-query": "^5.62.0",
+    "next": "^14.2.18",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native-qrcode-styled": "^0.3.3",
+    "react-native-safe-area-context": "5.7.0",
+    "react-native-svg": "15.15.4",
+    "react-native-web": "^0.21.2",
+    "viem": "^2.21.32",
+    "wagmi": "^2.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/react": "19.2.18",
+    "typescript": "^5.6.3"
+  },
+  "note": "wagmi/@base-org/account/@privy-io/react-auth are listed here only so Next's bundler/type resolution can reach them through @gami/identity's peer deps — app code must never `import` them directly (eslint rule 1 blocks it; use @gami/identity's GamiWalletProvider/GamiPrivyWebProvider and the GamiWallet/useGamiSiweLogin seam instead). Explicitly forbidden here (§14, enforced by eslint rule 5): @farcaster/*, @coinbase/onchainkit/minikit — @privy-io/react-auth declares @farcaster/mini-app-solana as an OPTIONAL peer only, confirmed not installed (pnpm doesn't resolve optional peers unless something else needs them), so it doesn't trip the gate:no-farcaster-deps check."
+}

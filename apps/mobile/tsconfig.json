@@ -1,0 +1,13 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@gami/core": ["../../packages/core/src"],
+      "@gami/chain": ["../../packages/chain/src"],
+      "@gami/identity/mobile": ["../../packages/identity/src/mobile.ts"],
+      "@gami/ui": ["../../packages/ui/src"],
+      "@gami/api": ["../../packages/api/src"]
+    }
+  }
+}
